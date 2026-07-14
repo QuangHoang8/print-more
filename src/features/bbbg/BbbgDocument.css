@@ -12,22 +12,20 @@
 }
 
 .bbbg-header {
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-  gap: 12px;
+  display: block;
 }
 
 .bbbg-header-logo {
-  height: 20mm;
-  width: auto;
+  display: block;
+  width: 100%;
+  height: auto;
   object-fit: contain;
 }
 
 .bbbg-header-date {
-  white-space: nowrap;
+  text-align: right;
   font-style: italic;
-  padding-top: 4px;
+  margin: 6px 0 0;
 }
 
 .bbbg-title {
@@ -45,6 +43,7 @@
 
 .bbbg-party {
   margin-bottom: 8px;
+  text-align: left;
 }
 
 .bbbg-party p {

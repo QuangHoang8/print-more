@@ -13,8 +13,8 @@ function BbbgDocument({ data }: BbbgDocumentProps) {
     <div className="bbbg-page">
       <header className="bbbg-header">
         <img className="bbbg-header-logo" src={HEADER_LOGO_SRC} alt="G-innovations" />
-        <div className="bbbg-header-date">HN, ngày…...tháng…..năm 2026</div>
       </header>
+      <div className="bbbg-header-date">HN, ngày…...tháng…..năm 2026</div>
 
       <h1 className="bbbg-title">BIÊN BẢN BÀN GIAO THIẾT BỊ ĐỊNH VỊ</h1>
       <div className="bbbg-so">Số : {data.soVanBan}</div>
