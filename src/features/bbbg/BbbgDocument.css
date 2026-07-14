@@ -1,0 +1,125 @@
+.bbbg-page {
+  box-sizing: border-box;
+  width: 210mm;
+  min-height: 297mm;
+  padding: 10mm;
+  margin: 0 auto;
+  background: #fff;
+  color: #000;
+  font-family: "Times New Roman", Times, serif;
+  font-size: 13px;
+  line-height: 1.4;
+}
+
+.bbbg-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.bbbg-header-logo {
+  height: 20mm;
+  width: auto;
+  object-fit: contain;
+}
+
+.bbbg-header-date {
+  white-space: nowrap;
+  font-style: italic;
+  padding-top: 4px;
+}
+
+.bbbg-title {
+  text-align: center;
+  font-size: 18px;
+  font-weight: 700;
+  margin: 18px 0 4px;
+}
+
+.bbbg-so {
+  text-align: center;
+  font-weight: 700;
+  margin-bottom: 14px;
+}
+
+.bbbg-party {
+  margin-bottom: 8px;
+}
+
+.bbbg-party p {
+  margin: 2px 0;
+}
+
+.bbbg-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 14px;
+  table-layout: fixed;
+}
+
+.bbbg-table th,
+.bbbg-table td {
+  border: 1px solid #000;
+  padding: 4px 6px;
+  text-align: left;
+  vertical-align: top;
+  word-break: break-word;
+}
+
+.bbbg-table th {
+  text-align: center;
+  font-weight: 700;
+}
+
+.bbbg-cell-center {
+  text-align: center;
+}
+
+.bbbg-col-stt {
+  width: 10mm;
+}
+
+.bbbg-col-ma {
+  width: 40mm;
+}
+
+.bbbg-col-dvbg {
+  width: 25mm;
+}
+
+.bbbg-col-dvnhan {
+  width: 65mm;
+}
+
+.bbbg-col-ghichu {
+  width: 50mm;
+}
+
+.bbbg-signatures {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 36px;
+  text-align: center;
+}
+
+.bbbg-signature-block {
+  width: 45%;
+}
+
+.bbbg-signature-title {
+  font-weight: 700;
+  margin: 0 0 6px;
+}
+
+.bbbg-signature-image {
+  height: 20mm;
+  display: block;
+  margin: 0 auto;
+  object-fit: contain;
+}
+
+.bbbg-signature-name {
+  font-weight: 700;
+  margin-top: 6px;
+}

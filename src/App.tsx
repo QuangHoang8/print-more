@@ -1,120 +1,81 @@
-import { useState } from "react";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "./assets/vite.svg";
-import heroImg from "./assets/hero.png";
+import { useMemo, useState } from "react";
+import UploadPanel from "./features/bbbg/UploadPanel";
+import PreviewList from "./features/bbbg/PreviewList";
+import PrintArea from "./features/bbbg/PrintArea";
+import { groupsToBbbgDocuments } from "./features/bbbg/mapping";
+import type { BbbgDocumentData, ParsedExcelResult } from "./features/bbbg/types";
+import "./features/bbbg/print.css";
 import "./App.css";
 
 function App() {
-  const [count, setCount] = useState(0);
+  const [docs, setDocs] = useState<BbbgDocumentData[]>([]);
+  const [selectedIds, setSelectedIds] = useState<Set<string>>(new Set());
+
+  const handleParsed = (result: ParsedExcelResult) => {
+    const nextDocs = groupsToBbbgDocuments(result.groups);
+    setDocs(nextDocs);
+    setSelectedIds(new Set(nextDocs.map((doc) => doc.id)));
+  };
+
+  const handleToggleSelect = (id: string) => {
+    setSelectedIds((prev) => {
+      const next = new Set(prev);
+      if (next.has(id)) next.delete(id);
+      else next.add(id);
+      return next;
+    });
+  };
+
+  const handleSelectIds = (ids: string[]) => {
+    setSelectedIds(new Set(ids));
+  };
+
+  const selectedDocs = useMemo(
+    () => docs.filter((doc) => selectedIds.has(doc.id)),
+    [docs, selectedIds],
+  );
 
   return (
     <>
-      <section id="center">
-        <div className="hero">
-          <img src={heroImg} className="base" width="170" height="179" alt="" />
-          <img src={reactLogo} className="framework" alt="React logo" />
-          <img src={viteLogo} className="vite" alt="Vite logo" />
-        </div>
-        <div>
-          <h1>Get started</h1>
+      <section className="bbbg-app no-print">
+        <header className="bbbg-app-header">
+          <h1>In hàng loạt Biên bản bàn giao</h1>
           <p>
-            Edit <code>src/App.tsx</code> and save to test <code>HMR</code>
+            Tải lên file Excel danh sách bàn giao thiết bị định vị, xem trước và in hàng
+            loạt các biên bản BBBG.
           </p>
-        </div>
-        <button
-          type="button"
-          className="counter"
-          onClick={() => setCount((count) => count + 1)}
-        >
-          Count is {count}
-        </button>
-      </section>
-      <button className="text-2xl font-bold">Test</button>
-      <div className="ticks"></div>
+        </header>
 
-      <section id="next-steps">
-        <div id="docs">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#documentation-icon"></use>
-          </svg>
-          <h2>Documentation</h2>
-          <p>Your questions, answered</p>
-          <ul>
-            <li>
-              <a href="https://vite.dev/" target="_blank">
-                <img className="logo" src={viteLogo} alt="" />
-                Explore Vite
-              </a>
-            </li>
-            <li>
-              <a href="https://react.dev/" target="_blank">
-                <img className="button-icon" src={reactLogo} alt="" />
-                Learn more
-              </a>
-            </li>
-          </ul>
-        </div>
-        <div id="social">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#social-icon"></use>
-          </svg>
-          <h2>Connect with us</h2>
-          <p>Join the Vite community</p>
-          <ul>
-            <li>
-              <a href="https://github.com/vitejs/vite" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#github-icon"></use>
-                </svg>
-                GitHub
-              </a>
-            </li>
-            <li>
-              <a href="https://chat.vite.dev/" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#discord-icon"></use>
-                </svg>
-                Discord
-              </a>
-            </li>
-            <li>
-              <a href="https://x.com/vite_js" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#x-icon"></use>
-                </svg>
-                X.com
-              </a>
-            </li>
-            <li>
-              <a href="https://bsky.app/profile/vite.dev" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#bluesky-icon"></use>
-                </svg>
-                Bluesky
-              </a>
-            </li>
-          </ul>
-        </div>
+        <UploadPanel onParsed={handleParsed} />
+
+        {docs.length > 0 && (
+          <>
+            <div className="bbbg-print-toolbar">
+              <p>
+                Đã chọn <strong>{selectedDocs.length}</strong> / {docs.length} biên bản để
+                in.
+              </p>
+              <button
+                type="button"
+                className="bbbg-print-button"
+                disabled={selectedDocs.length === 0}
+                onClick={() => window.print()}
+              >
+                In hàng loạt
+              </button>
+            </div>
+
+            <PreviewList
+              docs={docs}
+              selectedIds={selectedIds}
+              onToggleSelect={handleToggleSelect}
+              onSelectIds={handleSelectIds}
+            />
+          </>
+        )}
       </section>
 
-      <div className="ticks"></div>
-      <section id="spacer"></section>
+      <PrintArea docs={selectedDocs} />
     </>
   );
 }

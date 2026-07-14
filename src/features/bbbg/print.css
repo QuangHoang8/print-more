@@ -1,0 +1,29 @@
+.print-only {
+  display: none;
+}
+
+@media print {
+  @page {
+    size: A4;
+    margin: 0;
+  }
+
+  .no-print {
+    display: none !important;
+  }
+
+  .print-only {
+    display: block;
+  }
+
+  .bbbg-page {
+    margin: 0;
+    page-break-after: always;
+    break-after: page;
+  }
+
+  .bbbg-page:last-child {
+    page-break-after: auto;
+    break-after: auto;
+  }
+}

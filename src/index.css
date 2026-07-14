@@ -68,6 +68,14 @@ body {
   margin: 0;
 }
 
+@media print {
+  #root {
+    width: auto;
+    min-height: auto;
+    border-inline: none;
+  }
+}
+
 h1,
 h2 {
   font-family: var(--heading);
