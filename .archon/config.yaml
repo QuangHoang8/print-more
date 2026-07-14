@@ -1,0 +1,6 @@
+# Archon project config
+# Project chỉ ở local, chưa có remote 'origin' → tắt worktree isolation,
+# chạy trực tiếp trên checkout hiện tại và dùng nhánh 'main' làm base.
+worktree:
+  enabled: false
+  baseBranch: main
