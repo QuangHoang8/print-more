@@ -1,7 +1,6 @@
 import { useMemo, useState } from "react";
 import type { BbbgDocumentData } from "./types";
 import BbbgDocument from "./BbbgDocument";
-import "./PreviewList.css";
 
 interface PreviewListProps {
   docs: BbbgDocumentData[];
@@ -30,16 +29,16 @@ function PreviewList({ docs, selectedIds, onToggleSelect, onSelectIds }: Preview
     filteredIds.length > 0 && filteredIds.every((id) => selectedIds.has(id));
 
   return (
-    <div className="preview-list no-print">
-      <div className="preview-toolbar">
+    <div className="w-full max-w-[900px] mx-auto text-left no-print">
+      <div className="flex flex-wrap items-center justify-between gap-4 mb-4">
         <input
           type="search"
-          className="preview-filter"
+          className="flex-1 min-w-[280px] rounded-lg border border-[var(--border)] bg-[var(--bg)] px-3 py-2 text-[var(--text-h)] font-inherit"
           placeholder="Lọc theo đại diện, PGD hoặc số biên bản..."
           value={filterText}
           onChange={(event) => setFilterText(event.target.value)}
         />
-        <label className="preview-select-all">
+        <label className="flex items-center gap-2 whitespace-nowrap text-[var(--text-h)]">
           <input
             type="checkbox"
             checked={allFilteredSelected}
@@ -49,27 +48,27 @@ function PreviewList({ docs, selectedIds, onToggleSelect, onSelectIds }: Preview
         </label>
       </div>
 
-      <ul className="preview-cards">
+      <ul className="m-0 p-0 list-none flex flex-col gap-2.5">
         {filteredDocs.map((doc) => {
           const isExpanded = expandedId === doc.id;
           return (
-            <li className="preview-card" key={doc.id}>
-              <div className="preview-card-row">
+            <li className="border border-[var(--border)] rounded-[10px] p-3 px-4" key={doc.id}>
+              <div className="flex items-center gap-3">
                 <input
                   type="checkbox"
                   checked={selectedIds.has(doc.id)}
                   onChange={() => onToggleSelect(doc.id)}
                 />
-                <div className="preview-card-info">
-                  <p className="preview-card-title">Biên bản {doc.soVanBan}</p>
-                  <p className="preview-card-meta">
+                <div className="flex-1">
+                  <p className="m-0 font-semibold text-[var(--text-h)]">Biên bản {doc.soVanBan}</p>
+                  <p className="mt-0.5 text-sm text-[var(--text)]">
                     PGD: {doc.pgd || "—"} · Đại diện: {doc.benB.daiDien || "—"} ·{" "}
                     {doc.rows.length} mã định vị
                   </p>
                 </div>
                 <button
                   type="button"
-                  className="preview-toggle-button"
+                  className="rounded-md border border-[var(--accent-border)] bg-[var(--accent-bg)] px-3.5 py-1.5 text-[var(--text-h)] cursor-pointer whitespace-nowrap hover:bg-[var(--accent-border)]"
                   onClick={() => setExpandedId(isExpanded ? null : doc.id)}
                 >
                   {isExpanded ? "Ẩn xem trước" : "Xem trước"}
@@ -77,8 +76,16 @@ function PreviewList({ docs, selectedIds, onToggleSelect, onSelectIds }: Preview
               </div>
 
               {isExpanded && (
-                <div className="preview-a4-wrapper">
-                  <div className="preview-a4-scale">
+                <div className="mt-3.5 border-t border-[var(--border)] pt-3.5 overflow-auto">
+                  <div
+                    style={{
+                      width: "210mm",
+                      transform: "scale(0.55)",
+                      transformOrigin: "top left",
+                      marginBottom: "calc(-297mm * 0.45)",
+                      boxShadow: "var(--shadow)",
+                    }}
+                  >
                     <BbbgDocument data={doc} />
                   </div>
                 </div>
@@ -89,7 +96,7 @@ function PreviewList({ docs, selectedIds, onToggleSelect, onSelectIds }: Preview
       </ul>
 
       {filteredDocs.length === 0 && (
-        <p className="preview-empty">Không có biên bản nào khớp với bộ lọc.</p>
+        <p className="mt-5 text-[var(--text)]">Không có biên bản nào khớp với bộ lọc.</p>
       )}
     </div>
   );
