@@ -75,16 +75,16 @@
   font-weight: 700;
 }
 
-.bbbg-cell-center {
+.bbbg-table .bbbg-cell-center {
   text-align: center;
 }
 
-.bbbg-cell-total {
+.bbbg-table .bbbg-cell-total {
   text-align: center;
   font-weight: 700;
 }
 
-.bbbg-cell-total-value {
+.bbbg-table .bbbg-cell-total-value {
   text-align: center;
   font-weight: 700;
 }
