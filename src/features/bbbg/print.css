@@ -26,4 +26,10 @@
     page-break-after: auto;
     break-after: auto;
   }
+
+  /* An toàn: không để một dòng bảng bị cắt đôi ở ranh giới trang. */
+  .bbbg-page tr {
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
 }
