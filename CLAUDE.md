@@ -43,6 +43,7 @@ bun run preview   # preview the production build
 ## Where things live
 
 - `src/` — application source. See `src/CLAUDE.md` for code-authoring rules.
-- `src/features/bbbg/` — the one feature. See its `CLAUDE.md` for domain rules.
+- `src/features/bbbg/` — the one feature, organized into domain/infrastructure/ui
+  layers. See its `CLAUDE.md` for layer structure and domain rules.
 - `docs/` — reference spec files. See `docs/CLAUDE.md` (read-only source of truth).
 - `public/assets/` — static images referenced from print output (logos, signatures).
