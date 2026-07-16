@@ -23,12 +23,16 @@ function BbbgDocument({ data }: BbbgDocumentProps) {
       <div className="bbbg-so">Số: {data.soVanBan}</div>
 
       <div className="bbbg-party">
-        <p>BÊN A (BÊN GIAO/XUẤT KHO): Công ty Cổ phần G-innovations Việt Nam</p>
+        <p className="bbbg-party-heading">
+          BÊN A (BÊN GIAO/XUẤT KHO): Công ty Cổ phần G-innovations Việt Nam
+        </p>
         <p>Đại diện: Lý Thị Kiều Anh</p>
       </div>
 
       <div className="bbbg-party">
-        <p>BÊN B (BÊN NHẬN): Công ty cổ phần kinh doanh F88</p>
+        <p className="bbbg-party-heading">
+          BÊN B (BÊN NHẬN): Công ty cổ phần kinh doanh F88
+        </p>
         <p>Đại diện PGD: {data.benB.daiDien}</p>
       </div>
 
@@ -76,18 +80,26 @@ function BbbgDocument({ data }: BbbgDocumentProps) {
             <td className="bbbg-cell-total" colSpan={3}>
               Tổng cộng (Thiết bị):
             </td>
-            <td className="bbbg-cell-center">{tongThietBi}</td>
+            <td className="bbbg-cell-total-value">{tongThietBi}</td>
             <td />
             <td />
           </tr>
         </tfoot>
       </table>
 
-      <div className="bbbg-signatures">
-        <div className="bbbg-signature-side">
-          <p className="bbbg-signature-title">BÊN A</p>
-          <div className="bbbg-signature-people">
-            <div className="bbbg-signature-block">
+      <table className="bbbg-sign-table">
+        <colgroup>
+          <col className="bbbg-sign-col-a" />
+          <col className="bbbg-sign-col-a" />
+          <col className="bbbg-sign-col-b" />
+        </colgroup>
+        <tbody>
+          <tr>
+            <th colSpan={2}>BÊN A</th>
+            <th>BÊN B</th>
+          </tr>
+          <tr>
+            <td className="bbbg-sign-cell">
               <p className="bbbg-signature-role">Thủ kho</p>
               <img
                 className="bbbg-signature-image"
@@ -95,8 +107,8 @@ function BbbgDocument({ data }: BbbgDocumentProps) {
                 alt="Chữ ký Thủ kho"
               />
               <p className="bbbg-signature-name">Nguyễn Thị Thái Hậu</p>
-            </div>
-            <div className="bbbg-signature-block">
+            </td>
+            <td className="bbbg-sign-cell">
               <p className="bbbg-signature-role">Nhân viên bàn giao</p>
               <img
                 className="bbbg-signature-image"
@@ -104,20 +116,15 @@ function BbbgDocument({ data }: BbbgDocumentProps) {
                 alt="Chữ ký Nhân viên bàn giao"
               />
               <p className="bbbg-signature-name">Lý Thị Kiều Anh</p>
-            </div>
-          </div>
-        </div>
-        <div className="bbbg-signature-side">
-          <p className="bbbg-signature-title">BÊN B</p>
-          <div className="bbbg-signature-people">
-            <div className="bbbg-signature-block">
+            </td>
+            <td className="bbbg-sign-cell">
               <p className="bbbg-signature-role">&nbsp;</p>
               <div className="bbbg-signature-image" />
               <p className="bbbg-signature-name">{data.benB.daiDien}</p>
-            </div>
-          </div>
-        </div>
-      </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
     </div>
   );
 }
