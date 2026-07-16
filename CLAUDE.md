@@ -8,8 +8,10 @@ device-handover records) from an uploaded Excel file. All feature logic lives in
 
 - React 19 + TypeScript (strict), built with Vite 8.
 - React Compiler is enabled (via `@rolldown/plugin-babel` in `vite.config.ts`).
-- Tailwind CSS v4 (`@tailwindcss/vite`) is installed; current code uses plain
-  colocated `.css` files rather than utility classes.
+- Tailwind CSS v4 (`@tailwindcss/vite`) is the primary styling convention; all
+  component styles are applied via utility classes in JSX. Print-specific styles
+  (exact millimeter dimensions, `@page` rules, `@media print` blocks) that cannot
+  be expressed in Tailwind remain as minimal custom CSS in colocated `.css` files.
 - `xlsx` (SheetJS) for parsing uploaded spreadsheets.
 
 ## Package manager & commands
