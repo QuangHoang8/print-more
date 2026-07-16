@@ -1,5 +1,5 @@
 import * as XLSX from "xlsx";
-import type { ParsedExcelResult, SourceGroup } from "./types";
+import type { ParsedExcelResult, SourceGroup } from "../domain/types";
 
 export const ACCEPTED_EXTENSIONS = [".xlsx", ".xls"];
 const SOURCE_SHEET_NAME = "T-7-1";

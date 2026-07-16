@@ -1,14 +1,23 @@
-import type { BbbgDocumentData, BbbgTableRow } from "./types";
-import { paginateRows } from "./pagination";
+import type { BbbgDocumentData, BbbgTableRow } from "../domain/types";
+import { paginateRows } from "../domain/pagination";
+import {
+  DOCUMENT_TITLE,
+  BEN_A_COMPANY_NAME,
+  BEN_A_REPRESENTATIVE,
+  BEN_B_COMPANY_NAME,
+  EXPORT_REASON,
+  EXPORT_LOCATION,
+  THU_KHO_NAME,
+  NHAN_VIEN_NAME,
+  HEADER_LOGO_SRC,
+  SIGNATURE_THU_KHO_SRC,
+  SIGNATURE_NHAN_VIEN_SRC,
+} from "../domain/constants";
 import "./BbbgDocument.css";
 
 interface BbbgDocumentProps {
   data: BbbgDocumentData;
 }
-
-const HEADER_LOGO_SRC = "/assets/header-logo.png";
-const SIGNATURE_THU_KHO_SRC = "/assets/signature-thu-kho.png";
-const SIGNATURE_NHAN_VIEN_SRC = "/assets/signature-nhan-vien.png";
 
 function Letterhead({ data }: { data: BbbgDocumentData }) {
   return (
@@ -25,32 +34,25 @@ function Letterhead({ data }: { data: BbbgDocumentData }) {
       </div>
 
       <p className="text-center text-lg font-bold my-4.5 mx-0">
-        PHIẾU XUẤT KHO KIÊM BIÊN BẢN BÀN GIAO
+        {DOCUMENT_TITLE}
       </p>
       <div className="text-center font-bold mb-3.5">Số: {data.soVanBan}</div>
 
       <div className="mb-2 text-left">
         <p className="font-bold m-0.5">
-          BÊN A (BÊN GIAO/XUẤT KHO): Công ty Cổ phần G-innovations Việt Nam
+          BÊN A (BÊN GIAO/XUẤT KHO): {BEN_A_COMPANY_NAME}
         </p>
-        <p className="my-0.5 mx-0">Đại diện: Lý Thị Kiều Anh</p>
+        <p className="my-0.5 mx-0">Đại diện: {BEN_A_REPRESENTATIVE}</p>
       </div>
 
       <div className="mb-2 text-left">
-        <p className="font-bold m-0.5">
-          BÊN B (BÊN NHẬN): Công ty cổ phần kinh doanh F88
-        </p>
+        <p className="font-bold m-0.5">BÊN B (BÊN NHẬN): {BEN_B_COMPANY_NAME}</p>
         <p className="my-0.5 mx-0">Đại diện PGD: {data.benB.daiDien}</p>
       </div>
 
       <div className="mb-2 text-left">
-        <p className="my-0.5 mx-0">
-          Lý do xuất kho: Bàn giao thiết bị định vị theo hợp đồng/đơn hàng
-        </p>
-        <p className="my-0.5 mx-0">
-          Xuất tại kho: GINNO_Tầng 12, Tòa G-Group Tower, Số 5 Nguyễn Thị Duệ,
-          Phường Yên Hòa, Thành Phố Hà Nội, Việt Nam
-        </p>
+        <p className="my-0.5 mx-0">Lý do xuất kho: {EXPORT_REASON}</p>
+        <p className="my-0.5 mx-0">Xuất tại kho: {EXPORT_LOCATION}</p>
       </div>
     </>
   );
@@ -163,7 +165,7 @@ function SignatureTable({ data }: { data: BbbgDocumentData }) {
               src={SIGNATURE_THU_KHO_SRC}
               alt="Chữ ký Thủ kho"
             />
-            <p className="font-bold mt-1.5 mx-0">Nguyễn Thị Thái Hậu</p>
+            <p className="font-bold mt-1.5 mx-0">{THU_KHO_NAME}</p>
           </td>
           <td className="border border-black p-1.5 text-center align-top">
             <p className="font-bold m-1 mx-0">Nhân viên bàn giao</p>
@@ -172,7 +174,7 @@ function SignatureTable({ data }: { data: BbbgDocumentData }) {
               src={SIGNATURE_NHAN_VIEN_SRC}
               alt="Chữ ký Nhân viên bàn giao"
             />
-            <p className="font-bold mt-1.5 mx-0">Lý Thị Kiều Anh</p>
+            <p className="font-bold mt-1.5 mx-0">{NHAN_VIEN_NAME}</p>
           </td>
           <td className="border border-black p-1.5 text-center align-top">
             <p className="font-bold m-1 mx-0">&nbsp;</p>

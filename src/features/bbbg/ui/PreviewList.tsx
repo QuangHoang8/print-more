@@ -1,5 +1,5 @@
 import { useMemo, useState } from "react";
-import type { BbbgDocumentData } from "./types";
+import type { BbbgDocumentData } from "../domain/types";
 import BbbgDocument from "./BbbgDocument";
 
 interface PreviewListProps {

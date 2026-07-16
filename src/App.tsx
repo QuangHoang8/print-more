@@ -1,9 +1,9 @@
 import { useMemo, useState } from "react";
-import UploadPanel from "./features/bbbg/UploadPanel";
-import PreviewList from "./features/bbbg/PreviewList";
-import PrintArea from "./features/bbbg/PrintArea";
-import { groupsToBbbgDocuments } from "./features/bbbg/mapping";
-import type { BbbgDocumentData, ParsedExcelResult } from "./features/bbbg/types";
+import UploadPanel from "./features/bbbg/ui/UploadPanel";
+import PreviewList from "./features/bbbg/ui/PreviewList";
+import PrintArea from "./features/bbbg/ui/PrintArea";
+import { groupsToBbbgDocuments } from "./features/bbbg/domain/mapping";
+import type { BbbgDocumentData, ParsedExcelResult } from "./features/bbbg/domain/types";
 import "./features/bbbg/print.css";
 
 function App() {

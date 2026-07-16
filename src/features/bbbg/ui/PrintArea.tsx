@@ -1,4 +1,4 @@
-import type { BbbgDocumentData } from "./types";
+import type { BbbgDocumentData } from "../domain/types";
 import BbbgDocument from "./BbbgDocument";
 
 interface PrintAreaProps {
