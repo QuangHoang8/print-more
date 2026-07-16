@@ -1,7 +1,7 @@
 import { useCallback, useRef, useState } from "react";
 import type { ChangeEvent, DragEvent } from "react";
-import { BbbgParseError, parseBbbgExcel } from "./parseExcel";
-import type { ParsedExcelResult } from "./types";
+import { BbbgParseError, parseBbbgExcel } from "../infrastructure/parseExcel";
+import type { ParsedExcelResult } from "../domain/types";
 
 interface UploadPanelProps {
   onParsed: (result: ParsedExcelResult) => void;
