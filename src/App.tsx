@@ -5,7 +5,6 @@ import PrintArea from "./features/bbbg/PrintArea";
 import { groupsToBbbgDocuments } from "./features/bbbg/mapping";
 import type { BbbgDocumentData, ParsedExcelResult } from "./features/bbbg/types";
 import "./features/bbbg/print.css";
-import "./App.css";
 
 function App() {
   const [docs, setDocs] = useState<BbbgDocumentData[]>([]);
@@ -37,10 +36,10 @@ function App() {
 
   return (
     <>
-      <section className="bbbg-app no-print">
-        <header className="bbbg-app-header">
-          <h1>In hàng loạt Biên bản bàn giao</h1>
-          <p>
+      <section className="flex flex-col items-center gap-6 px-5 py-10 pb-[60px] no-print">
+        <header className="text-center max-w-[640px]">
+          <h1 className="text-3xl mb-2">In hàng loạt Biên bản bàn giao</h1>
+          <p className="m-0">
             Tải lên file Excel danh sách bàn giao thiết bị định vị, xem trước và in hàng
             loạt các biên bản BBBG.
           </p>
@@ -50,14 +49,14 @@ function App() {
 
         {docs.length > 0 && (
           <>
-            <div className="bbbg-print-toolbar">
-              <p>
+            <div className="w-full max-w-[900px] flex items-center justify-between gap-4 rounded-[10px] border border-[var(--border)] bg-[var(--code-bg)] p-3 px-4">
+              <p className="m-0 text-[var(--text-h)]">
                 Đã chọn <strong>{selectedDocs.length}</strong> / {docs.length} biên bản để
                 in.
               </p>
               <button
                 type="button"
-                className="bbbg-print-button"
+                className="rounded-lg px-5 py-2.5 bg-[var(--accent)] text-white font-semibold cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed hover:brightness-105"
                 disabled={selectedDocs.length === 0}
                 onClick={() => window.print()}
               >

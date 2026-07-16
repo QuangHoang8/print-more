@@ -2,7 +2,6 @@ import { useCallback, useRef, useState } from "react";
 import type { ChangeEvent, DragEvent } from "react";
 import { BbbgParseError, parseBbbgExcel } from "./parseExcel";
 import type { ParsedExcelResult } from "./types";
-import "./UploadPanel.css";
 
 interface UploadPanelProps {
   onParsed: (result: ParsedExcelResult) => void;
@@ -53,9 +52,13 @@ function UploadPanel({ onParsed }: UploadPanelProps) {
   };
 
   return (
-    <div className="upload-panel no-print">
+    <div className="w-full max-w-[640px] mx-auto no-print">
       <div
-        className={`upload-dropzone${isDragging ? " is-dragging" : ""}`}
+        className={`relative rounded-xl border-2 border-dashed px-5 py-10 text-center cursor-pointer transition-colors duration-200 hover:border-[var(--accent)] hover:bg-[var(--accent-bg)] ${
+          isDragging
+            ? "border-[var(--accent)] bg-[var(--accent-bg)]"
+            : "border-[var(--border)]"
+        }`}
         onDragOver={(event) => {
           event.preventDefault();
           setIsDragging(true);
@@ -73,19 +76,23 @@ function UploadPanel({ onParsed }: UploadPanelProps) {
           ref={inputRef}
           type="file"
           accept=".xlsx,.xls"
-          className="upload-input"
+          className="absolute inset-0 opacity-0 w-full h-full cursor-pointer"
           onChange={handleInputChange}
         />
-        <p className="upload-instructions">
+        <p className="m-0 text-[var(--text)]">
           Kéo-thả file Excel (.xlsx, .xls) vào đây, hoặc bấm để chọn file
         </p>
-        {isLoading && <p className="upload-status">Đang xử lý file...</p>}
+        {isLoading && <p className="mt-2 text-[var(--accent)]">Đang xử lý file...</p>}
       </div>
 
-      {error && <p className="upload-error">{error}</p>}
+      {error && (
+        <p className="mt-3 rounded-lg bg-red-100 px-3.5 py-2.5 text-left text-red-600">
+          {error}
+        </p>
+      )}
 
       {loadedFile && !error && (
-        <p className="upload-success">
+        <p className="mt-3 rounded-lg bg-[var(--accent-bg)] px-3.5 py-2.5 text-left text-[var(--text-h)]">
           Đã tải <strong>{loadedFile.name}</strong> — {loadedFile.groupCount} biên bản đã
           được phân tích.
         </p>
