@@ -25,7 +25,11 @@ export interface ParsedExcelResult {
 export interface BbbgTableRow {
   stt: number;
   maDinhVi: string;
+  /** Đơn vị giao (luôn là GINNO). */
   dvbg: string;
+  /** Số lượng thiết bị của dòng — luôn là 1 (mỗi mã định vị = 1 thiết bị). */
+  soLuong: number;
+  /** Đơn vị nhận (PGD). */
   dvNhanBg: string;
   ghiChu: string;
 }

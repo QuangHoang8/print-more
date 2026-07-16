@@ -75,20 +75,29 @@
   text-align: center;
 }
 
+.bbbg-cell-total {
+  text-align: right;
+  font-weight: 700;
+}
+
 .bbbg-col-stt {
   width: 10mm;
 }
 
 .bbbg-col-ma {
-  width: 40mm;
+  width: 38mm;
 }
 
-.bbbg-col-dvbg {
-  width: 25mm;
+.bbbg-col-dvgiao {
+  width: 22mm;
+}
+
+.bbbg-col-soluong {
+  width: 18mm;
 }
 
 .bbbg-col-dvnhan {
-  width: 65mm;
+  width: 52mm;
 }
 
 .bbbg-col-ghichu {
@@ -102,13 +111,28 @@
   text-align: center;
 }
 
+.bbbg-signature-side {
+  width: 50%;
+}
+
+.bbbg-signature-people {
+  display: flex;
+  justify-content: space-around;
+  gap: 8px;
+}
+
 .bbbg-signature-block {
-  width: 45%;
+  flex: 1;
 }
 
 .bbbg-signature-title {
   font-weight: 700;
   margin: 0 0 6px;
+}
+
+.bbbg-signature-role {
+  font-style: italic;
+  margin: 0 0 4px;
 }
 
 .bbbg-signature-image {

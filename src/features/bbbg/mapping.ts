@@ -10,7 +10,7 @@ export function groupToBbbgDocument(group: SourceGroup): BbbgDocumentData {
   return {
     id: `bbbg-${group.stt}`,
     groupStt: group.stt,
-    soVanBan: `${padStt(group.stt)}/BBBG-GINNO`,
+    soVanBan: `${padStt(group.stt)}/PXK-BBBG-GINNO`,
     benB: {
       daiDien: group.contactName,
     },
@@ -18,6 +18,7 @@ export function groupToBbbgDocument(group: SourceGroup): BbbgDocumentData {
       stt: index + 1,
       maDinhVi: item.alias,
       dvbg: DVBG_FIXED,
+      soLuong: 1,
       dvNhanBg: group.pgd,
       ghiChu: "",
     })),

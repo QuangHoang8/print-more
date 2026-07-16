@@ -34,11 +34,21 @@ redefining row/group shapes locally.
 
 These are legally-meaningful fixed values, not placeholders:
 
-- Bên A (giao) is always **Công ty cổ phần G-innovations Việt Nam**, đại diện
-  **Lý Thị Kiều Anh**, hardcoded in `BbbgDocument.tsx`.
-- ĐVBG for every row is `GINNO` (`DVBG_FIXED` in `mapping.ts`).
-- Document number format is `<STT padded to 2>/BBBG-GINNO`.
-- Bên B đại diện and ĐV Nhận BG come from the parsed group.
+- The document is a **Phiếu xuất kho kiêm biên bản bàn giao** (title in
+  `BbbgDocument.tsx`).
+- Bên A (giao/xuất kho) is always **Công ty Cổ phần G-innovations Việt Nam**,
+  đại diện **Lý Thị Kiều Anh**, hardcoded in `BbbgDocument.tsx`.
+- Bên B (nhận) is always **Công ty cổ phần kinh doanh F88**; "Đại diện PGD" and
+  the "Đơn vị nhận (PGD)" column come from the parsed group (contact name / PGD).
+- "Lý do xuất kho" and "Xuất tại kho" are fixed strings hardcoded in
+  `BbbgDocument.tsx`.
+- "Đơn vị giao" for every row is `GINNO` (`DVBG_FIXED` in `mapping.ts`); "Số
+  lượng" per row is always `1` and "Tổng cộng (Thiết bị)" is the row count.
+- Document number format is `<STT padded to 2>/PXK-BBBG-GINNO`.
+- Signatures are fixed for Bên A — **Nguyễn Thị Thái Hậu** (Thủ kho) and **Lý
+  Thị Kiều Anh** (Nhân viên bàn giao); the Bên B signature name comes from the
+  parsed group. Signature images live in `public/assets/`
+  (`signature-thu-kho.png`, `signature-nhan-vien.png`).
 
 ## Print architecture
 
