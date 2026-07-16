@@ -9,8 +9,11 @@ commands live in the root `CLAUDE.md`; BBBG domain logic lives in
 - Write function components and `export default` them; name the file after the
   component (`UploadPanel.tsx` → `UploadPanel`).
 - Type props with a local `interface` named `<Component>Props`.
-- Colocate a component's styles in a sibling `.css` file and import it at the top
-  of the component module (e.g. `import "./UploadPanel.css";`).
+- Apply component styles using Tailwind CSS v4 utility classes directly in JSX
+  `className` attributes. Component styles are colocated in Tailwind, not in
+  separate CSS files. Exception: if print-specific or layout-critical styles
+  cannot be expressed in Tailwind (e.g., exact millimeter dimensions for the
+  BBBG document), keep those in a minimal colocated `.css` file and import it.
 
 ## Types & imports
 
